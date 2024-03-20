@@ -1,0 +1,6 @@
+@Hackaponto.Reports_HostAddress = http://localhost:5217
+
+GET {{Hackaponto.Reports_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
