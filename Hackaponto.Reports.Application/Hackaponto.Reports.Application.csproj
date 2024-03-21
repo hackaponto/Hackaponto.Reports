@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Hackaponto.Reports.Domain\Hackaponto.Reports.Entities.csproj" />
     <ProjectReference Include="..\Hackaponto.Reports.Repository\Hackaponto.Reports.Infrastructure.csproj" />
+    <ProjectReference Include="..\Hackaponto.Reports.UseCases\Hackaponto.Reports.UseCases.csproj" />
   </ItemGroup>
 
   <ItemGroup>
