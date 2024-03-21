@@ -8,8 +8,7 @@ namespace Hackaponto.Reports.Application.Configuration
     {
         public static void AddPostgresDbContexts(this IServiceCollection services)
         {
-            services.AddDbContext<DbContext<ClockingEvent>>(ConfigureDbContext);
-            services.AddDbContext<DbContext<UserWorkday>>(ConfigureDbContext);
+            services.AddDbContext<Context>(ConfigureDbContext);
         }
 
         private static void ConfigureDbContext(DbContextOptionsBuilder optionsBuilder)
