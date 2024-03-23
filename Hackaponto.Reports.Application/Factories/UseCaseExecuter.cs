@@ -1,4 +1,4 @@
-﻿using Hackaponto.Reports.UseCases.Interfaces;
+﻿using Hackaponto.Reports.UseCases.Interfaces.UseCases;
 
 namespace Hackaponto.Reports.Application.Factories
 {

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" name="viewport" content="text/html, initial-scale=1.0">
+    <title>Relat�rio de Folha de Ponto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Relat�rio de Folha de Ponto</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Batimentos de Ponto</th>
+                <th>Total de Horas Trabalhadas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{userWorkdaysTable}}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -9,7 +9,7 @@ namespace Hackaponto.Reports.Entities.Entities
         public TimeSpan TotalWorkHours { get; set; } = TimeSpan.Zero;
         public List<DailyTimesheet> Days { get; set; } = [];
 
-        public MonthlyTimesheetReport(int year, int month, List<UserWorkday> userWorkdays)
+        public MonthlyTimesheetReport(int year, int month, IEnumerable<UserWorkday> userWorkdays)
         { 
             Year = year;
             Month = month;

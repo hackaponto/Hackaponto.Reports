@@ -5,14 +5,14 @@ namespace Hackaponto.Reports.Entities.Entities
 {
     public class DailyTimesheet
     {
-        public int Day { get; set; }
-        public TimeSpan TotalWorkhours { get; set; }
+        public DateOnly Date { get; set; }
+        public TimeSpan TotalWorkHours { get; set; }
         public List<ClockingEvent> ClockingEvents { get; set; } = [];
 
         public DailyTimesheet(UserWorkday userWorkday)
         {
-            Day = userWorkday.Date.Day;
-            TotalWorkhours = userWorkday.TotalWorkHours;
+            Date = userWorkday.Date;
+            TotalWorkHours = userWorkday.TotalWorkHours;
             ClockingEvents.AddRange(userWorkday.ClockingEvents);
         }
 

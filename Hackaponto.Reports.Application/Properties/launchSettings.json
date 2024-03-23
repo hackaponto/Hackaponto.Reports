@@ -15,7 +15,11 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "DbConnection__Host": "hackaponto-db.cle82sk0exwy.us-east-1.rds.amazonaws.com",
+        "DbConnection__Username": "hackaponto",
+        "DbConnection__Password": "sJ2TPDe90aHz27Lu9iaZ",
+        "DbConnection__Database": "hackaponto",
+        "SmtpSettings__Password": "QAdaKwqu5cgCj@"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7044;http://localhost:5217"
@@ -25,7 +29,11 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "DbConnection__Host": "hackaponto-db.cle82sk0exwy.us-east-1.rds.amazonaws.com",
+        "DbConnection__Username": "hackaponto",
+        "DbConnection__Password": "sJ2TPDe90aHz27Lu9iaZ",
+        "DbConnection__Database": "hackaponto",
+        "SmtpSettings__Password": "QAdaKwqu5cgCj@"
       }
     },
     "Container (Dockerfile)": {
@@ -34,7 +42,12 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "environmentVariables": {
         "ASPNETCORE_HTTPS_PORTS": "8081",
-        "ASPNETCORE_HTTP_PORTS": "8080"
+        "ASPNETCORE_HTTP_PORTS": "8080",
+        "DbConnection__Host": "hackaponto-db.cle82sk0exwy.us-east-1.rds.amazonaws.com",
+        "DbConnection__Username": "hackaponto",
+        "DbConnection__Password": "sJ2TPDe90aHz27Lu9iaZ",
+        "DbConnection__Database": "hackaponto",
+        "SmtpSettings__Password": "QAdaKwqu5cgCj@"
       },
       "publishAllPorts": true,
       "useSSL": true

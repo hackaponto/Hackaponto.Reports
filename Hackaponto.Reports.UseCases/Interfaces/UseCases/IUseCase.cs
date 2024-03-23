@@ -1,4 +1,4 @@
-﻿namespace Hackaponto.Reports.UseCases.Interfaces
+﻿namespace Hackaponto.Reports.UseCases.Interfaces.UseCases
 {
     public interface IUseCase { }
 

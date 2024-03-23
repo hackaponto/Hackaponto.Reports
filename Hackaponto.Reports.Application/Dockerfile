@@ -20,6 +20,10 @@ ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./Hackaponto.Reports.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
+RUN apk update && apk add tzdata &&\ 
+    cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime &&\ 
+    echo "America/Sao_Paulo" > /etc/timezone &&\ 
+    apk del tzdata && rm -rf /var/cache/apk/*
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Hackaponto.Reports.dll"]
