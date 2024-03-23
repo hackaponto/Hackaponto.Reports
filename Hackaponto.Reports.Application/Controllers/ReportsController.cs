@@ -7,15 +7,21 @@ namespace Hackaponto.Reports.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class ReportsController(ILogger<ReportsController> logger, ISendMonthlyTimesheetReportByEmailUseCase sendMonthlyTimesheetReportByEmailUseCase, IConfiguration config) : ControllerBase
+    public class ReportsController(ISendMonthlyTimesheetReportByEmailUseCase sendMonthlyTimesheetReportByEmailUseCase) : ControllerBase
     {
-        private readonly ILogger<ReportsController> _logger = logger;
         private readonly ISendMonthlyTimesheetReportByEmailUseCase _sendMonthlyTimesheetReportByEmailUseCase = sendMonthlyTimesheetReportByEmailUseCase;
 
         [HttpGet("monthly-report/{year}/{month}")]
         public async Task SendMonthlyReport(int year, int month)
         {
             await _sendMonthlyTimesheetReportByEmailUseCase.Execute(year, month);
+        }
+
+        [HttpGet("monthly-report/last-month")]
+        public async Task SendMonthlyReport()
+        {
+            var now = DateTime.UtcNow;
+            await _sendMonthlyTimesheetReportByEmailUseCase.Execute(now.Year, now.Month);
         }
     }
 }

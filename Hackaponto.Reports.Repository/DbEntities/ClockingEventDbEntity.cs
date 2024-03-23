@@ -22,28 +22,5 @@ namespace Hackaponto.Reports.Infrastructure.DbEntities
 
         [Column("type")]
         public ClockingEventType Type { get; set; }
-
-        //public static implicit operator ClockingEvent(ClockingEventDbEntity clockingEventDbEntity) => new()
-        //{
-        //    Id = clockingEventDbEntity.Id,
-        //    UserId = clockingEventDbEntity.UserId,
-        //    DateTime = new DateTime(clockingEventDbEntity.Date, clockingEventDbEntity.Time),
-        //    Type = clockingEventDbEntity.Type
-        //};
     }
-
-    //public static class ClockingEventDbEntityExtensions
-    //{
-    //    public static List<ClockingEvent> ToDomainList(this IEnumerable<ClockingEventDbEntity> clockingEventDbEntities)
-    //    {
-    //        var clockingEvents = new List<ClockingEvent>();
-
-    //        foreach (var clockingEventDbEntity in clockingEventDbEntities)
-    //        {
-    //            clockingEvents.Add(clockingEventDbEntity);
-    //        }
-
-    //        return clockingEvents;
-    //    }
-    //}
 }

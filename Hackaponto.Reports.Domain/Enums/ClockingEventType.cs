@@ -1,5 +1,8 @@
-﻿namespace Hackaponto.Reports.Domain.Enums
+﻿using System.Text.Json.Serialization;
+
+namespace Hackaponto.Reports.Domain.Enums
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ClockingEventType
     {
         IN,

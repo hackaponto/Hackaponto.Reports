@@ -23,7 +23,7 @@ namespace Hackaponto.Reports.Infrastructure.Repositories
             var query = new StringBuilder();
             var parameters = new DynamicParameters();
 
-            query.Append(DbQueries.GetJustWorkdays);
+            query.Append(DbQueries.GetWorkdays);
             query.AppendLine("  WHERE ");
             query.AppendLine($"  u.user_id = '{userId.ToString()}' and ");
             query.AppendLine($"  u.\"date\" >= '{initialDate.ToString("yyyy-MM-dd")}' and ");
@@ -43,35 +43,32 @@ namespace Hackaponto.Reports.Infrastructure.Repositories
             return workdays;
         }
 
-        public IEnumerable<UserWorkday> Get(Guid userId, int year, int month)
+        public UserWorkday Get(Guid userId, DateOnly date)
         {
             using var connection = _repositoryHelper.GetPsqlConnection();
             connection.Open();
 
-            var initialDate = new DateOnly(year, month, 1);
-            var finalDate = initialDate.AddMonths(1).AddDays(-1);
-
             var query = new StringBuilder();
-            var parameters = new DynamicParameters();
 
-            query.Append(DbQueries.GetJustWorkdays);
+            query.Append(DbQueries.GetWorkdays);
             query.AppendLine("  WHERE ");
             query.AppendLine($"  u.user_id = '{userId.ToString()}' and ");
-            query.AppendLine($"  u.\"date\" >= '{initialDate.ToString("yyyy-MM-dd")}' and ");
-            query.AppendLine($"  u.\"date\" <= '{finalDate.ToString("yyyy-MM-dd")}' ");
+            query.AppendLine($"  u.\"date\" = '{date.ToString("yyyy-MM-dd")}'");
+            query.AppendLine("LIMIT 1");
 
-            query.AppendLine("ORDER BY u.date");
+            var workday = (UserWorkday)connection.Query<UserWorkdayDbEntity>(query.ToString()).First();
 
-            var workdays = new List<UserWorkday>();
-            foreach (var workdayDbEntity in connection.Query<UserWorkdayDbEntity>(query.ToString()))
-            {
-                UserWorkday workday = workdayDbEntity;
+            var clockingEventsQuery = new StringBuilder();
 
-                workday.ClockingEvents = connection.Query<ClockingEvent>($"SELECT id, user_id as userId, date, time, type FROM cloking_events WHERE user_id = '{workday.UserId}' AND date = '{workday.Date}' ORDER BY time ASC");
-                workdays.Add(workday);
-            }
+            clockingEventsQuery.Append(DbQueries.GetClockingEvents);
+            clockingEventsQuery.AppendLine("  WHERE ");
+            clockingEventsQuery.AppendLine($"  c.user_id = '{userId.ToString()}' and ");
+            clockingEventsQuery.AppendLine($"  c.\"date\" = '{date.ToString("yyyy-MM-dd")}'");
+            clockingEventsQuery.AppendLine("ORDER BY time ASC");
 
-            return workdays;
+            workday.ClockingEvents = connection.Query<ClockingEvent>(clockingEventsQuery.ToString());
+
+            return workday;
         }
     }
 }

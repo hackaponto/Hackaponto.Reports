@@ -5,7 +5,7 @@ using Hackaponto.Reports.UseCases.Interfaces.Gateways;
 using Hackaponto.Reports.UseCases.Interfaces.Repositories;
 using Hackaponto.Reports.UseCases.Interfaces.UseCases;
 
-namespace Hackaponto.Reports.UseCases
+namespace Hackaponto.Reports.UseCases.Reports
 {
     public class SendMonthlyTimesheetReportByEmailUseCase(IUserWorkdayRepository userWorkdayRepository,
         IUserInfoService userInfoRepository,
@@ -23,7 +23,7 @@ namespace Hackaponto.Reports.UseCases
             if (user.Email is null || user.Email == string.Empty)
                 throw new BadRequestException("Não pudemos encontrar o seu email. Por favor, verifique seu cadastro e tente novamente.");
 
-            var userWorkdays = _userWorkdayRepository.Get(user.Id, year, month);
+            var userWorkdays = _userWorkdayRepository.GetAll(user.Id, year, month);
 
             if (userWorkdays == null || !userWorkdays.Any())
                 throw new BadRequestException("Não será possível gerar o espelho de ponto pois não há nenhum dia de trabalho para o mês.");

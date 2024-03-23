@@ -4,6 +4,7 @@ namespace Hackaponto.Reports.UseCases.Interfaces.Repositories
 {
     public interface IUserWorkdayRepository
     {
-        IEnumerable<UserWorkday> Get(Guid userId, int year, int month);
+        IEnumerable<UserWorkday> GetAll(Guid userId, int year, int month);
+        UserWorkday Get(Guid userId, DateOnly date);
     }
 }

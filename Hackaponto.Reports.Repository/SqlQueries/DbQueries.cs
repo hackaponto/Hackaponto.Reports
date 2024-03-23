@@ -2,7 +2,7 @@
 {
     public static class DbQueries
     {
-        public const string GetWithClockingEvents = @"
+        public const string GetWorkDaysIncludingClockingEvents = @"
 select
 	c.""id"" as ""Id"",
 	c.""time"" as ""Time"",
@@ -14,7 +14,7 @@ FROM public.user_work_days as u
 inner join public.cloking_events as c on u.user_id  = c.user_id  and u.""date""  = c.""date"" 
 ";
 
-        public const string GetJustClockingEvents = @"
+        public const string GetClockingEvents = @"
 select
 	""id"" as ""Id"",
 	""date"" as ""Date"",
@@ -23,7 +23,7 @@ select
 	""user_id"" as ""UserId""
 FROM public.cloking_events c
 ";
-        public const string GetJustWorkdays = @"
+        public const string GetWorkdays = @"
 select
 	""user_id"" as ""UserId"",
 	""date"" as ""Date"",

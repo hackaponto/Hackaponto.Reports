@@ -15,19 +15,4 @@ namespace Hackaponto.Reports.Infrastructure.DbEntities
             TotalWorkHours = userWorkdayDbEntity.TotalWorkHours,
         };
     }
-
-    //public static class UserWorkdayDbEntityExtensions
-    //{
-    //    public static List<UserWorkday> ToDomainList(this IEnumerable<UserWorkdayDbEntity> userWorkdayDbEntities)
-    //    {
-    //        var userWorkdays = new List<UserWorkday>();
-
-    //        foreach (var userWorkdayDbEntity in userWorkdayDbEntities)
-    //        {
-    //            userWorkdays.Add(userWorkdayDbEntity);
-    //        }
-
-    //        return userWorkdays;
-    //    }
-    //}
 }

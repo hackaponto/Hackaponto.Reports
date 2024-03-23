@@ -1,11 +1,7 @@
-﻿using Hackaponto.Reports.Application.Gateway;
-using Hackaponto.Reports.Infrastructure.Contexts;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.IdentityModel.Protocols;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace Hackaponto.Reports.Application.Configuration
 {
