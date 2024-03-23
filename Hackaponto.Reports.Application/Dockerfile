@@ -9,21 +9,20 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Hackaponto.Reports/Hackaponto.Reports.csproj", "Hackaponto.Reports/"]
-RUN dotnet restore "./Hackaponto.Reports/Hackaponto.Reports.csproj"
+COPY ["Hackaponto.Reports.Application/Hackaponto.Reports.Application.csproj", "Hackaponto.Reports.Application/"]
+COPY ["Hackaponto.Reports.Domain/Hackaponto.Reports.Entities.csproj", "Hackaponto.Reports.Domain/"]
+COPY ["Hackaponto.Reports.Repository/Hackaponto.Reports.Infrastructure.csproj", "Hackaponto.Reports.Repository/"]
+COPY ["Hackaponto.Reports.UseCases/Hackaponto.Reports.UseCases.csproj", "Hackaponto.Reports.UseCases/"]
+RUN dotnet restore "./Hackaponto.Reports.Application/Hackaponto.Reports.Application.csproj"
 COPY . .
-WORKDIR "/src/Hackaponto.Reports"
-RUN dotnet build "./Hackaponto.Reports.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Hackaponto.Reports.Application"
+RUN dotnet build "./Hackaponto.Reports.Application.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Hackaponto.Reports.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Hackaponto.Reports.Application.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
-RUN apk update && apk add tzdata &&\ 
-    cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime &&\ 
-    echo "America/Sao_Paulo" > /etc/timezone &&\ 
-    apk del tzdata && rm -rf /var/cache/apk/*
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Hackaponto.Reports.dll"]
+ENTRYPOINT ["dotnet", "Hackaponto.Reports.Application.dll"]

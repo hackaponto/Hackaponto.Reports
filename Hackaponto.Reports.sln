@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackaponto.Reports.Applicat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackaponto.Reports.Infrastructure", "Hackaponto.Reports.Repository\Hackaponto.Reports.Infrastructure.csproj", "{F9AD4830-E8DE-444A-B392-A1215279E11D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackaponto.Reports.UseCases", "Hackaponto.Reports.UseCases\Hackaponto.Reports.UseCases.csproj", "{BB85C3D6-5F57-4487-82D1-E204939519F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackaponto.Reports.UseCases", "Hackaponto.Reports.UseCases\Hackaponto.Reports.UseCases.csproj", "{BB85C3D6-5F57-4487-82D1-E204939519F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
